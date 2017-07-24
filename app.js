@@ -2,18 +2,26 @@
  * @Author: puxiao.wh 
  * @Date: 2017-07-23 17:02:49 
  * @Last Modified by: puxiao.wh
- * @Last Modified time: 2017-07-24 14:06:37
+ * @Last Modified time: 2017-07-24 21:24:14
  */
 
 const Koa = require('koa');
 const app = new Koa();
 const router = require('./app/router.js');
-const config = require('./config/config.local.js');
 const jsonp = require('koa-jsonp');
 const enforceHttps = require('koa-sslify');
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
+
+let config = {};
+
+if( process.env.NODE_ENV === 'production' ) { 
+    config = require('./config/config.local.js')
+} else if( process.env.NODE_ENV === 'development' ) {
+    config = require('./config/config.default.js')
+}
+
 
 app.use(enforceHttps());
 app.use(jsonp());
