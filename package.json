@@ -5,7 +5,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node ./app.js"
+    "dev": "node-dev ./app.js",
+    "release": "pm2 start ./app.js"
   },
   "repository": {
     "type": "git",
@@ -19,9 +20,12 @@
   "homepage": "https://github.com/wuguzi/koa2-kd05#readme",
   "description": "",
   "dependencies": {
+    "http": "^0.0.0",
+    "https": "^1.0.0",
     "koa": "^2.3.0",
     "koa-jsonp": "^2.0.2",
     "koa-router": "^7.2.1",
+    "koa-sslify": "^2.1.2",
     "mongodb": "^2.2.30"
   }
 }
