@@ -2,14 +2,15 @@
  * @Author: puxiao.wh 
  * @Date: 2017-07-23 17:02:49 
  * @Last Modified by: puxiao.wh
- * @Last Modified time: 2017-07-24 21:24:14
+ * @Last Modified time: 2017-07-25 00:39:11
  */
 
 const Koa = require('koa');
 const app = new Koa();
 const router = require('./app/router.js');
 const jsonp = require('koa-jsonp');
-const enforceHttps = require('koa-sslify');
+// 强制转换成https
+// const enforceHttps = require('koa-sslify');
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
@@ -23,7 +24,7 @@ if( process.env.NODE_ENV === 'production' ) {
 }
 
 
-app.use(enforceHttps());
+// app.use(enforceHttps());
 app.use(jsonp());
 app.use(router());
 

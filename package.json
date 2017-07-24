@@ -27,6 +27,8 @@
     "koa-jsonp": "^2.0.2",
     "koa-router": "^7.2.1",
     "koa-sslify": "^2.1.2",
-    "mongodb": "^2.2.30"
+    "mongodb": "^2.2.30",
+    "node-fetch": "^1.7.1",
+    "urlx": "^1.2.5"
   }
 }

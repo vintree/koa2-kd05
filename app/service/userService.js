@@ -1,23 +1,15 @@
-/*
- * @Author: puxiao.wh 
- * @Date: 2017-07-23 17:05:52 
- * @Last Modified by:   puxiao.wh 
- * @Last Modified time: 2017-07-23 17:05:52 
- */
+const _ = require('../utils/request')
+const api = require('../../config/data/api')
+const _static = require('../../config/data/static')
 
-const userDao = require('./../dao/userDao.js');
-
-var getUserById = async (userId) => {
-    var users = userDao.getUserById(userId);
-    var responseContent = '';
-    for(let user of users) {
-        reaponseContent += '姓名：' + user.name + '&nbsp;|';
-        reaponseContent += '年龄：' + user.age + '&nbsp;|';
-        reaponseContent += '身高：' + user.height + '<br />';
+exports.jscode2session = async(options) => {
+    const { js_code, grant_type = 'authorization_code' } = options
+    const params = {
+        appid: _static.wx.appid,
+        secret: _static.wx.secret,
+        js_code,
+        grant_type
     }
-    return responseContent;
+    const data = await _.get(api.jscode2session, params)
+    return data
 }
-
-module.exports = {
-    getUserById : getUserById
-};
